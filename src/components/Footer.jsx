@@ -58,7 +58,7 @@ export default function Footer() {
 
       gsap.to(letterRefs.current, {
         y: 0,
-        duration: 1.3,
+        duration: 1.5,
         ease: "power2.out",
         stagger: 0.04,
         scrollTrigger: {
@@ -205,9 +205,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Giant wordmark — edge-to-edge, GSAP translateY-only scroll reveal, no opacity */}
+      {/* Giant wordmark*/}
       <div className="w-full overflow-hidden leading-none select-none">
-        <h2 className="font-heading font-bold text-white whitespace-nowrap text-[18vw] sm:text-[15vw] lg:text-[11vw] leading-[0.85] -mx-1 text-center">
+        <h2 className="font-heading font-bold text-white pb-2 text-[12vw] sm:text-[12vw] lg:text-[11vw] leading-[0.85] text-center break-words">
           {chars.map((char, i) => (
             <span key={i} ref={addLetterRef} className="inline-block">
               {char}

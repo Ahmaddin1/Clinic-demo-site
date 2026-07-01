@@ -27,15 +27,9 @@ export default function HeroSection() {
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center pt-28 pb-16 px-4 md:px-8 overflow-hidden">
       {/* Background image */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1600&q=80"
-          alt="Modern dental clinic interior at Dental Avenue Faisalabad"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-white/85" />
+      <div className="absolute inset-0 -z-10 bg-white">
+       
+        <div className="absolute inset-0" />
       </div>
 
       <div className="mx-auto max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -53,7 +47,7 @@ export default function HeroSection() {
             className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-textDark"
           >
             Faisalabad&apos;s Trusted Dental Clinic for{" "}
-            <span className="text-black">Healthy, Confident Smiles</span>
+            <span className="text-textDark">Healthy, Confident Smiles</span>
           </h1>
 
           <p

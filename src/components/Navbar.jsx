@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { gsap } from "gsap";
+import { Menu, Phone, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -17,7 +16,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const mobileMenuRef = useRef(null);
   const pathname = usePathname();
 
   // Close menu on route change
@@ -25,34 +23,10 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [pathname]);
 
-  // GSAP animate mobile menu open/close
-  useEffect(() => {
-    const el = mobileMenuRef.current;
-    if (!el) return;
-
-    if (menuOpen) {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: -12 },
-        { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
-      );
-    } else {
-      gsap.to(el, { opacity: 0, y: -12, duration: 0.2, ease: "power3.in" });
-    }
-  }, [menuOpen]);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
   return (
-    <>
-      <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
-        <nav className="mx-auto max-w-7xl bg-secondary/60 backdrop-blur-md rounded-2xl shadow-md border border-black/8 px-5 py-3 flex items-center justify-between">
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
+      <nav className="mx-auto max-w-7xl bg-secondary/60 backdrop-blur-md rounded-2xl shadow-md border border-black/8 px-5 py-3">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <span className="text-primary font-heading font-bold text-xl leading-none">
@@ -93,10 +67,18 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors duration-200 shrink-0"
+              className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors duration-200 shrink-0"
             >
               Contact Us
             </Link>
+            <a
+              href="tel:+15551234567"
+              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white hover:bg-orange-600 transition-colors duration-200 shrink-0"
+              aria-label="Call +1 (555) 123-4567"
+              title="+1 (555) 123-4567"
+            >
+              <Phone size={20} aria-hidden="true" />
+            </a>
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="md:hidden p-2 rounded-lg text-primary hover:bg-black/5 transition-colors"
@@ -106,35 +88,35 @@ export default function Navbar() {
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
-        </nav>
-      </header>
-
-      {/* Mobile menu panel */}
-      {menuOpen && (
-        <div
-          ref={mobileMenuRef}
-          className="fixed inset-0 z-40 flex flex-col pt-24 px-4 md:hidden bg-secondary/60 backdrop-blur-md "
-          style={{ opacity: 0 }}
-        >
-          <ul className="flex flex-col gap-1 mt-4">
-            {navLinks.map(({ label, href }) => (
-              <li key={href}>
-                <Link
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-xl text-lg font-medium transition-colors duration-150 ${
-                    pathname === href
-                      ? "text-accent bg-accent/5"
-                      : "text-primary hover:text-accent hover:bg-accent/5"
-                  }`}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
-      )}
-    </>
+
+        {/* Mobile menu panel */}
+        <div
+          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 md:hidden ${
+            menuOpen ? "mt-4 max-h-96 opacity-100" : "mt-0 max-h-0 opacity-0"
+          }`}
+        >
+          <div className="rounded-2xl border border-black/8 bg-secondary/80 p-4 shadow-sm backdrop-blur-md">
+            <ul className="flex flex-col gap-1">
+              {navLinks.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block px-4 py-3 rounded-xl text-lg font-medium transition-colors duration-150 ${
+                      pathname === href
+                        ? "text-accent bg-accent/5"
+                        : "text-primary hover:text-accent hover:bg-accent/5"
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }
