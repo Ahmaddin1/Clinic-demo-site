@@ -2,6 +2,7 @@ import { Poppins, Inter } from "next/font/google";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CallBubble from "@/components/CallBubble";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <CallBubble />
         </SmoothScroll>
       </body>
     </html>

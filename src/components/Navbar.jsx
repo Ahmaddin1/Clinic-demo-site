@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -71,14 +71,6 @@ export default function Navbar() {
             >
               Contact Us
             </Link>
-            <a
-              href="tel:+15551234567"
-              className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white hover:bg-orange-600 transition-colors duration-200 shrink-0"
-              aria-label="Call +1 (555) 123-4567"
-              title="+1 (555) 123-4567"
-            >
-              <Phone size={20} aria-hidden="true" />
-            </a>
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="md:hidden p-2 rounded-lg text-primary hover:bg-black/5 transition-colors"
