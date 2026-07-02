@@ -38,7 +38,7 @@ export default function DentalImplantsPage() {
     <ServicePageLayout
       title="Dental Implants"
       intro="Permanent, natural-looking replacements for missing teeth, restoring full bite function and confidence."
-      image="https://images.unsplash.com/photo-1598256989014-93a25d7d7350?w=900&q=80"
+      image="https://plus.unsplash.com/premium_photo-1674998790004-1c08a997011c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fGRlbnRhbCUyMGNsaW5pY3xlbnwwfHwwfHx8MA%3D%3D"
       imageAlt="Dental implant consultation and placement at Dental Avenue Faisalabad"
       whatToExpect={whatToExpect}
       trustPoints={trustPoints}

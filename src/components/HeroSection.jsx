@@ -34,7 +34,7 @@ export default function HeroSection() {
 
       <div className="mx-auto max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left: copy */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
           <span
             ref={eyebrowRef}
             className="inline-flex items-center gap-2 text-accent font-semibold text-sm uppercase tracking-widest"
@@ -58,7 +58,7 @@ export default function HeroSection() {
             transparent pricing. No surprises, just exceptional care.
           </p>
 
-          <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
+          <div ref={ctaRef} className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors duration-200"
