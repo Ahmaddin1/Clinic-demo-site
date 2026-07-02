@@ -68,6 +68,7 @@ export default function HowBookingWorks() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 50%",
+          scrub: 2,
           once: true,
         },
       });

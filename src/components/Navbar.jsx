@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { Menu, X } from "lucide-react";
+
+gsap.registerPlugin(useGSAP);
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -18,15 +22,69 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef(null);
+  const mobilePanelRef = useRef(null);
+  const mobileLinksBoxRef = useRef(null);
+  const hasAnimatedMenuRef = useRef(false);
 
   // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
+  useGSAP(
+    () => {
+      const panel = mobilePanelRef.current;
+      const linksBox = mobileLinksBoxRef.current;
+
+      if (!panel || !linksBox) return;
+
+      if (!hasAnimatedMenuRef.current) {
+        gsap.set(panel, { height: 0, marginTop: 0 });
+        gsap.set(linksBox, { autoAlpha: 0, y: -8 });
+        hasAnimatedMenuRef.current = true;
+        return;
+      }
+
+      const tl = gsap.timeline();
+
+      if (menuOpen) {
+        tl.to(panel, {
+          height: "auto",
+          marginTop: 16,
+          duration: 0.4,
+          ease: "power3.out",
+        }).to(linksBox, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.14,
+          ease: "power3.out",
+        });
+      } else {
+        tl.to(linksBox, {
+          autoAlpha: 0,
+          y: -8,
+          duration: 0.12,
+          ease: "power3.in",
+        }).to(panel, {
+          height: 0,
+          marginTop: 0,
+          duration: 0.4,
+          ease: "power3.inOut",
+        });
+      }
+
+      return () => tl.kill();
+    },
+    { scope: navRef, dependencies: [menuOpen] },
+  );
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
-      <nav className="mx-auto max-w-7xl bg-secondary/60 backdrop-blur-md rounded-2xl shadow-md border border-black/8 px-5 py-3">
+      <nav
+        ref={navRef}
+        className="mx-auto max-w-7xl bg-secondary/40 backdrop-blur-md rounded-2xl shadow-md border border-black/8 px-5 py-3"
+      >
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
@@ -84,12 +142,11 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu panel */}
-        <div
-          className={`overflow-hidden transition-[max-height,opacity,margin] duration-300 md:hidden ${
-            menuOpen ? "mt-4 opacity-100" : "mt-0 max-h-0 opacity-0"
-          }`}
-        >
-          <div className="rounded-2xl border border-black/8 bg-secondary/80 p-4 shadow-sm backdrop-blur-md">
+        <div ref={mobilePanelRef} className="overflow-hidden md:hidden">
+          <div
+            ref={mobileLinksBoxRef}
+            className="rounded-2xl border border-black/8 bg-secondary/40 p-4 shadow-sm backdrop-blur-md"
+          >
             <ul className="flex flex-col gap-1">
               {navLinks.map(({ label, href }) => (
                 <li key={href}>
