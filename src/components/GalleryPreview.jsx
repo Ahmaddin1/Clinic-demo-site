@@ -52,7 +52,7 @@ export default function GalleryPreview() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 85%",
+            start: "top 65%",
             once: true,
           },
         });
@@ -68,7 +68,7 @@ export default function GalleryPreview() {
         stagger: 0.15,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 70%",
           once: true,
           scrub: true,
         },
@@ -102,7 +102,7 @@ export default function GalleryPreview() {
             <div
               key={i}
               ref={(el) => (imgRefs.current[i] = el)}
-              className="relative aspect-[4/3] rounded-2xl overflow-hidden group"
+              className="relative aspect-4/3 rounded-2xl overflow-hidden group"
             >
               <Image
                 src={src}

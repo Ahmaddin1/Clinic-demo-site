@@ -72,7 +72,7 @@ export default function Testimonials() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
+            start: "top 65%",
             once: true,
           },
         });
@@ -88,7 +88,7 @@ export default function Testimonials() {
         stagger: 0.15,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 75%",
+          start: "top 65%",
           scrub: true,
           once: true,
         },

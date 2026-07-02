@@ -50,7 +50,7 @@ export default function HowBookingWorks() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 30%",
+            start: "top 50%",
             once: true,
             
           },
@@ -67,7 +67,7 @@ export default function HowBookingWorks() {
         stagger: 0.15,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 85%",
+          start: "top 50%",
           once: true,
         },
       });

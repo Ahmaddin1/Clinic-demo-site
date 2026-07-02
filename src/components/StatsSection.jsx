@@ -1,4 +1,12 @@
+"use client";
+
+import { useRef } from "react";
 import { CalendarCheck2, Star, ShieldCheck } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function ToothIcon({
   size = 24,
@@ -28,62 +36,130 @@ const ACCENT = "#F97316";
 const TEXT_DARK = "#1C1C1C";
 
 const stats = [
-  { icon: ToothIcon, value: "10,000+", label: "Patients Treated" },
-  { icon: CalendarCheck2, value: "10+", label: "Years in Practice" },
+  {
+    icon: ToothIcon,
+    value: 10000,
+    suffix: "+",
+    label: "Patients Treated",
+  },
+  {
+    icon: CalendarCheck2,
+    value: 10,
+    suffix: "+",
+    label: "Years in Practice",
+  },
   {
     icon: Star,
-    value: "4.9",
+    value: 4.9,
+    decimals: 1,
     label: "Average Rating",
     sublabel: "from 500+ reviews",
     accent: true,
   },
-  { icon: ShieldCheck, value: "98%", label: "Satisfaction Rate" },
+  {
+    icon: ShieldCheck,
+    value: 98,
+    suffix: "%",
+    label: "Satisfaction Rate",
+  },
 ];
 
 export default function StatsSection() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const counters = gsap.utils.toArray(".stat-value");
+
+      counters.forEach((counter) => {
+        const endValue = Number(counter.dataset.value);
+        const decimals = Number(counter.dataset.decimals || 0);
+        const suffix = counter.dataset.suffix || "";
+        const value = { current: 0 };
+
+        gsap.to(value, {
+          current: endValue,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+            once: true,
+          },
+          onUpdate: () => {
+            const formatted = value.current.toLocaleString("en-US", {
+              minimumFractionDigits: decimals,
+              maximumFractionDigits: decimals,
+            });
+
+            counter.textContent = `${formatted}${suffix}`;
+          },
+        });
+      });
+    },
+    { scope: sectionRef },
+  );
+
   return (
-    <section  className="w-full py-16 px-4 bg-white">
+    <section ref={sectionRef} className="w-full py-16 px-4 bg-white">
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {stats.map(({ icon: Icon, value, label, sublabel, accent }, i) => {
-          const tint = accent ? ACCENT : NAVY;
-          return (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center rounded-2xl border px-6 py-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#1B3A6B]/30 transition-colors duration-300"
-              style={{ borderColor: `${tint}33` }}
-            >
-              <div
-                className="flex items-center justify-center w-14 h-14 rounded-full mb-4"
-                style={{ backgroundColor: `${tint}1A` }}
-              >
-                <Icon size={26} color={tint} strokeWidth={2} />
-              </div>
+        {stats.map(
+          (
+            {
+              icon: Icon,
+              value,
+              suffix = "",
+              decimals = 0,
+              label,
+              sublabel,
+              accent,
+            },
+            i,
+          ) => {
+            const tint = accent ? ACCENT : NAVY;
 
+            return (
               <div
-                className="text-3xl font-bold"
-                style={{ color: accent ? tint : TEXT_DARK }}
+                key={i}
+                className="flex flex-col items-center text-center rounded-2xl border px-6 py-8 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#1B3A6B]/30 transition-colors duration-300"
+                style={{ borderColor: `${tint}33` }}
               >
-                {value}
-              </div>
-
-              <div
-                className="text-sm mt-1"
-                style={{ color: TEXT_DARK, opacity: 0.65 }}
-              >
-                {label}
-              </div>
-
-              {sublabel && (
                 <div
-                  className="text-xs mt-0.5 font-medium"
-                  style={{ color: tint, opacity: 0.85 }}
+                  className="flex items-center justify-center w-14 h-14 rounded-full mb-4"
+                  style={{ backgroundColor: `${tint}1A` }}
                 >
-                  {sublabel}
+                  <Icon size={26} color={tint} strokeWidth={2} />
                 </div>
-              )}
-            </div>
-          );
-        })}
+
+                <div
+                  className="stat-value text-3xl font-bold"
+                  style={{ color: accent ? tint : TEXT_DARK }}
+                  data-value={value}
+                  data-suffix={suffix}
+                  data-decimals={decimals}
+                >
+                  {`${(0).toFixed(decimals)}${suffix}`}
+                </div>
+
+                <div
+                  className="text-sm mt-1"
+                  style={{ color: TEXT_DARK, opacity: 0.65 }}
+                >
+                  {label}
+                </div>
+
+                {sublabel && (
+                  <div
+                    className="text-xs mt-0.5 font-medium"
+                    style={{ color: tint, opacity: 0.85 }}
+                  >
+                    {sublabel}
+                  </div>
+                )}
+              </div>
+            );
+          },
+        )}
       </div>
     </section>
   );
