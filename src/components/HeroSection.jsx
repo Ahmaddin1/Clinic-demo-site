@@ -16,19 +16,28 @@ export default function HeroSection() {
   const subRef = useRef(null);
   const ctaRef = useRef(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(eyebrowRef.current, { y: 50, opacity: 0, duration: 0.8 })
-      .from(headlineRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55")
-      .from(subRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55")
-      .from(ctaRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55");
-  }, { scope: containerRef });
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.from(eyebrowRef.current, { y: 50, opacity: 0, duration: 0.8 })
+        .from(
+          headlineRef.current,
+          { y: 50, opacity: 0, duration: 0.8 },
+          "-=0.55",
+        )
+        .from(subRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55")
+        .from(ctaRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55");
+    },
+    { scope: containerRef },
+  );
 
   return (
-    <section ref={containerRef} className="relative min-h-screen flex items-center pt-28 pb-16 px-4 md:px-8 overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative min-h-screen flex items-center pt-28 pb-16 px-4 md:px-8 overflow-hidden"
+    >
       {/* Background image */}
       <div className="absolute inset-0 -z-10 bg-white">
-       
         <div className="absolute inset-0" />
       </div>
 
@@ -58,7 +67,10 @@ export default function HeroSection() {
             transparent pricing. No surprises, just exceptional care.
           </p>
 
-          <div ref={ctaRef} className="flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+          <div
+            ref={ctaRef}
+            className="flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+          >
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors duration-200"

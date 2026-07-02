@@ -22,10 +22,10 @@ export default function SmoothScroll({ children }) {
     ).matches;
 
     // Prefer native scrolling on touch-first devices to avoid iOS Safari gesture conflicts.
-    if (prefersReducedMotion || isTouchPrimary) {
-      ScrollTrigger.refresh();
-      return undefined;
-    }
+    // if (prefersReducedMotion || isTouchPrimary) {
+    //   ScrollTrigger.refresh();
+    //   return undefined;
+    // }
 
     const lenis = new Lenis({
       duration: 1.5,

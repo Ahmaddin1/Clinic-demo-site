@@ -24,7 +24,7 @@ const images = [
     category: "Interior",
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1661580511704-404b878a4f96?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGRlbnRhbCUyMGNsaW5pY3N8ZW58MHx8MHx8fDA%3D",
+    src: "",
     alt: "Bright and clean dental treatment room",
     category: "Interior",
   },
