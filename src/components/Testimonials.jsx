@@ -141,7 +141,7 @@ export default function Testimonials() {
         {/* Link */}
         <div className="flex justify-center mt-8">
           <a
-            href="https://maps.google.com"
+            href="https://www.google.com/maps/search/?api=1&query=Dental+Avenue+Faisalabad"
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent font-semibold text-sm hover:underline inline-flex items-center gap-1.5"

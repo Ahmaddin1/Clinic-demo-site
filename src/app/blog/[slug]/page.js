@@ -1,9 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
+import {
+  ChevronRight,
+  ArrowLeft,
+  ArrowRight,
+  Calendar,
+  Clock,
+} from "lucide-react";
 
 export const metadata = {
-  title: "How Often Should You Really Visit the Dentist? | Dental Avenue Faisalabad",
+  title:
+    "How Often Should You Really Visit the Dentist? | Dental Avenue Faisalabad",
   description:
     "Most people assume an annual checkup is enough. The honest answer depends on your personal risk level -- and skipping visits almost always costs more in the long run.",
 };
@@ -12,17 +19,22 @@ export default function BlogPost() {
   return (
     <article className="pt-32 pb-16 px-4 md:px-8">
       <div className="mx-auto max-w-3xl">
-
         {/* Breadcrumb */}
         <nav
           className="flex items-center gap-1.5 text-xs text-textDark/50 mb-8"
           aria-label="Breadcrumb"
         >
-          <Link href="/" className="hover:text-accent transition-colors">Home</Link>
+          <Link href="/" className="hover:text-accent transition-colors">
+            Home
+          </Link>
           <ChevronRight size={13} />
-          <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
+          <Link href="/blog" className="hover:text-accent transition-colors">
+            Blog
+          </Link>
           <ChevronRight size={13} />
-          <span className="text-textDark/80 line-clamp-1">How Often Should You Really Visit the Dentist?</span>
+          <span className="text-textDark/80 line-clamp-1">
+            How Often Should You Really Visit the Dentist?
+          </span>
         </nav>
 
         {/* Article header */}
@@ -33,8 +45,7 @@ export default function BlogPost() {
               June 12, 2025
             </span>
             <span className="flex items-center gap-1.5">
-              <Clock size={13} />
-              5 min read
+              <Clock size={13} />5 min read
             </span>
           </div>
 
@@ -50,11 +61,12 @@ export default function BlogPost() {
         </header>
 
         {/* Hero image */}
-        <div className="relative aspect-[16/9] rounded-2xl overflow-hidden mb-12">
+        <div className="relative aspect-16/9 rounded-2xl overflow-hidden mb-12">
           <Image
             src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=80"
             alt="Dentist reviewing patient records during a routine checkup at Dental Avenue Faisalabad"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 75vw, 768px"
             className="object-cover"
             priority
           />
@@ -62,10 +74,9 @@ export default function BlogPost() {
 
         {/* Article body */}
         <div className="prose-content flex flex-col gap-6 text-textDark/80 leading-relaxed">
-
           <p>
-            The &ldquo;twice a year&rdquo; rule you have heard since childhood was
-            popularised by a toothpaste advertisement in the 1950s, not a
+            The &ldquo;twice a year&rdquo; rule you have heard since childhood
+            was popularised by a toothpaste advertisement in the 1950s, not a
             clinical guideline. The actual recommendation from dental
             associations is more nuanced: visit often enough that problems are
             caught before they become expensive. For most healthy adults with
@@ -79,20 +90,20 @@ export default function BlogPost() {
 
           <p>
             Your dentist is looking at a combination of factors when they
-            recommend a recall interval. Gum disease history is the biggest
-            one -- patients who have had periodontitis need more frequent
-            cleanings to prevent recurrence. Diabetes, dry mouth from
-            medication, and a history of frequent cavities all push the
-            interval shorter. Smokers accumulate tartar faster and face higher
-            oral cancer risk, so quarterly visits are common.
+            recommend a recall interval. Gum disease history is the biggest one
+            -- patients who have had periodontitis need more frequent cleanings
+            to prevent recurrence. Diabetes, dry mouth from medication, and a
+            history of frequent cavities all push the interval shorter. Smokers
+            accumulate tartar faster and face higher oral cancer risk, so
+            quarterly visits are common.
           </p>
 
           <p>
             On the other end, a patient in their 30s with no fillings, no gum
             issues, no systemic conditions, and a solid home care routine can
             often go twelve months between visits without any clinical downside.
-            The key word is &ldquo;solid&rdquo; -- most people overestimate how well
-            they brush and floss.
+            The key word is &ldquo;solid&rdquo; -- most people overestimate how
+            well they brush and floss.
           </p>
 
           <h2 className="font-heading font-bold text-2xl text-textDark mt-4">
@@ -104,10 +115,9 @@ export default function BlogPost() {
             dentist is checking for early decay on all surfaces, probing the
             gumline for pocket depth changes, examining soft tissue for any
             lesions, reviewing existing restorations for wear or cracks, and
-            assessing bite changes. An X-ray (usually once a year for
-            lower-risk patients) catches what is invisible to the naked eye --
-            decay between teeth, bone levels around roots, and impacted wisdom
-            teeth.
+            assessing bite changes. An X-ray (usually once a year for lower-risk
+            patients) catches what is invisible to the naked eye -- decay
+            between teeth, bone levels around roots, and impacted wisdom teeth.
           </p>
 
           <p>
@@ -134,8 +144,8 @@ export default function BlogPost() {
 
           <p>
             If cost is a barrier to regular visits, tell us. We will work out a
-            realistic maintenance schedule with you and flag which treatments are
-            urgent versus which can wait. What we will not do is let small
+            realistic maintenance schedule with you and flag which treatments
+            are urgent versus which can wait. What we will not do is let small
             problems grow silently when a short visit would have caught them.
           </p>
 
@@ -151,7 +161,6 @@ export default function BlogPost() {
             an honest interval recommendation based on your mouth, not a
             one-size-fits-all guideline.
           </p>
-
         </div>
 
         {/* End-of-article CTA */}
@@ -184,7 +193,6 @@ export default function BlogPost() {
             Back to Blog
           </Link>
         </div>
-
       </div>
     </article>
   );

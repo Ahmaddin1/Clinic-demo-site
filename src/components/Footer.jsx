@@ -166,7 +166,9 @@ export default function Footer() {
                 <MapPin size={16} className="text-accent mt-0.5 shrink-0" />
                 <span className="text-white/70 text-sm">
                   {/* PLACEHOLDER -- replace before handoff */}
-                  123 Main Boulevard, Faisalabad, Punjab, Pakistan
+                  123 Main Boulevard, Peoples Colony,
+                  <br />
+                  Faisalabad, Punjab, Pakistan
                 </span>
               </li>
               <li className="flex items-start gap-3">

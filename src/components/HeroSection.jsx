@@ -18,15 +18,39 @@ export default function HeroSection() {
 
   useGSAP(
     () => {
+      const animatedItems = [
+        eyebrowRef.current,
+        headlineRef.current,
+        subRef.current,
+        ctaRef.current,
+      ];
+
+      gsap.set(animatedItems, { y: 50, opacity: 0 });
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(eyebrowRef.current, { y: 50, opacity: 0, duration: 0.8 })
-        .from(
+      tl.fromTo(
+        eyebrowRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8 },
+      )
+        .fromTo(
           headlineRef.current,
-          { y: 50, opacity: 0, duration: 0.8 },
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
           "-=0.55",
         )
-        .from(subRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55")
-        .from(ctaRef.current, { y: 50, opacity: 0, duration: 0.8 }, "-=0.55");
+        .fromTo(
+          subRef.current,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.55",
+        )
+        .fromTo(
+          ctaRef.current,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          "-=0.55",
+        );
     },
     { scope: containerRef },
   );

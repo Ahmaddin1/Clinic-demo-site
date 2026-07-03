@@ -38,27 +38,27 @@ const TEXT_DARK = "#1C1C1C";
 const stats = [
   {
     icon: ToothIcon,
-    value: 10000,
+    value: 1000,
     suffix: "+",
     label: "Patients Treated",
   },
   {
     icon: CalendarCheck2,
-    value: 10,
+    value: 5,
     suffix: "+",
     label: "Years in Practice",
   },
   {
     icon: Star,
-    value: 4.9,
+    value: 5.0,
     decimals: 1,
     label: "Average Rating",
-    sublabel: "from 500+ reviews",
+    sublabel: "from 350+ reviews",
     accent: true,
   },
   {
     icon: ShieldCheck,
-    value: 98,
+    value: 100,
     suffix: "%",
     label: "Satisfaction Rate",
   },
@@ -85,13 +85,16 @@ export default function StatsSection() {
             trigger: sectionRef.current,
             start: "top 60%",
             once: true,
+            onEnter: () => {
+              // Reset display to 0 right before animation starts
+              counter.textContent = `${(0).toFixed(decimals)}${suffix}`;
+            },
           },
           onUpdate: () => {
             const formatted = value.current.toLocaleString("en-US", {
               minimumFractionDigits: decimals,
               maximumFractionDigits: decimals,
             });
-
             counter.textContent = `${formatted}${suffix}`;
           },
         });
@@ -102,6 +105,18 @@ export default function StatsSection() {
 
   return (
     <section ref={sectionRef} className="w-full py-16 px-4 bg-white">
+      <noscript>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {stats.map(({ label, value, suffix = "", decimals = 0 }, i) => (
+            <div key={i} className="flex flex-col items-center text-center rounded-2xl border px-6 py-8">
+              <div className="text-3xl font-bold">
+                {`${value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}${suffix}`}
+              </div>
+              <div className="text-sm mt-1">{label}</div>
+            </div>
+          ))}
+        </div>
+      </noscript>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {stats.map(
           (
@@ -138,7 +153,10 @@ export default function StatsSection() {
                   data-suffix={suffix}
                   data-decimals={decimals}
                 >
-                  {`${(0).toFixed(decimals)}${suffix}`}
+                  {`${value.toLocaleString("en-US", {
+                    minimumFractionDigits: decimals,
+                    maximumFractionDigits: decimals,
+                  })}${suffix}`}
                 </div>
 
                 <div

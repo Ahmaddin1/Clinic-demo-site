@@ -319,7 +319,7 @@ export default function ContactForm() {
             <div className="rounded-2xl overflow-hidden border border-black/8 h-64">
               <iframe
                 title="Dental Avenue Faisalabad location map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108879.42888896498!2d73.0151!3d31.4504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3922693f0000000b%3A0x6e55e9fe4e98b08f!2sFaisalabad%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699000000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d73.0851!3d31.4697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39224095b7c1c0c1%3A0x1!2sPeoples+Colony%2C+Faisalabad%2C+Punjab%2C+Pakistan!5e0!3m2!1sen!2s!4v1699000000000!5m2!1sen!2s"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

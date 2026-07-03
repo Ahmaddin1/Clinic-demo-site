@@ -267,7 +267,7 @@ export default function ServicePageLayout({
               href="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors duration-200 shrink-0"
             >
-              Get Exact Pricing
+              Book an Appointment
               <ChevronRight size={16} />
             </Link>
           </div>

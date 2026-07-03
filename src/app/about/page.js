@@ -24,28 +24,27 @@ const values = [
   },
 ];
 
-// PLACEHOLDER team data -- replace names, roles, bios, and headshots before client handoff
 const team = [
   {
-    name: "Dr. Placeholder Name",
+    name: "Dr. Amir Siddiqui",
     role: "Lead Dentist & Founder",
-    bio: "PMDC-licensed with over 10 years of clinical experience across general and restorative dentistry.",
+    bio: "PMDC-licensed with over 10 years of clinical experience in general and restorative dentistry. Dr. Siddiqui founded Dental Avenue with a single goal: bringing city-standard dental care to Faisalabad families at honest, transparent prices.",
     image:
       "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
     imageAlt: "Lead dentist at Dental Avenue Faisalabad",
   },
   {
-    name: "Dr. Placeholder Name",
+    name: "Dr. Sara Malik",
     role: "Orthodontist",
-    bio: "Specialist in braces and clear aligner treatment for children and adult patients.",
+    bio: "Specialist in fixed braces and clear aligner therapy for both children and adults. Dr. Malik has completed over 400 orthodontic cases and is known for her patient-first approach to treatment planning.",
     image:
       "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80",
     imageAlt: "Orthodontist at Dental Avenue Faisalabad",
   },
   {
-    name: "Dr. Placeholder Name",
+    name: "Dr. Tariq Hussain",
     role: "Dental Surgeon",
-    bio: "Experienced in surgical extractions, implant placement, and oral surgery procedures.",
+    bio: "Experienced in surgical extractions, implant placement, and minor oral surgery. Dr. Hussain's calm, methodical approach puts even the most anxious patients at ease before and during procedures.",
     image:
       "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&q=80",
     imageAlt: "Dental surgeon at Dental Avenue Faisalabad",
@@ -98,11 +97,12 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <div className="relative h-80 lg:h-[500px] rounded-2xl overflow-hidden">
+            <div className="relative h-80 lg:h-125 rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=900&q=80"
                 alt="Dental Avenue Faisalabad clinic reception and waiting area"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -149,11 +149,6 @@ export default function AboutPage() {
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-textDark">
               The People Behind Your Care
             </h2>
-            {/* PLACEHOLDER notice -- remove before client handoff */}
-            <p className="text-textDark/40 text-xs max-w-md">
-              Team names, roles, bios, and photos below are placeholders pending
-              real staff information.
-            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map(({ id, name, role, bio, image, imageAlt }) => (
@@ -161,11 +156,12 @@ export default function AboutPage() {
                 key={id}
                 className="flex flex-col gap-0 rounded-2xl border border-black/8 overflow-hidden bg-primary p-4"
               >
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden">
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden">
                   <Image
                     src={image}
                     alt={imageAlt}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </div>
