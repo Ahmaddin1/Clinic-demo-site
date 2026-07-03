@@ -6,7 +6,7 @@ import CTABanner from "@/components/CTABanner";
 export const metadata = {
   title: "Dental Services in Faisalabad | Dental Avenue",
   description:
-    "Explore all dental treatments at Dental Avenue Faisalabad -- scaling, root canals, extractions, braces, implants, and teeth whitening. Book today.",
+    "Explore all dental treatments at Dental Avenue Faisalabad | scaling, root canals, extractions, braces, implants, and teeth whitening. Book today.",
 };
 
 export default function ServicesPage() {
@@ -32,7 +32,7 @@ export default function ServicesPage() {
               Our Dental Services
             </h1>
             <p className="text-textDark/70 text-lg leading-relaxed">
-              From routine cleanings to full smile restorations -- everything
+              From routine cleanings to full smile restorations. Everything
               your family needs under one roof in Faisalabad.
             </p>
           </div>

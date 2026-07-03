@@ -61,7 +61,7 @@ export default function BlogPost() {
         </header>
 
         {/* Hero image */}
-        <div className="relative aspect-16/9 rounded-2xl overflow-hidden mb-12">
+        <div className="relative aspect-video rounded-2xl overflow-hidden mb-12">
           <Image
             src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=80"
             alt="Dentist reviewing patient records during a routine checkup at Dental Avenue Faisalabad"

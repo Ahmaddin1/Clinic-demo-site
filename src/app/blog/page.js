@@ -13,7 +13,7 @@ const posts = [
     slug: "how-often-should-you-visit-the-dentist",
     title: "How Often Should You Really Visit the Dentist?",
     excerpt:
-      "Most people assume once a year is fine. The honest answer depends on your risk level -- and skipping checkups costs more in the long run.",
+      "Most people assume once a year is fine. The honest answer depends on your risk level and skipping checkups costs more in the long run.",
     image:
       "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&q=80",
     imageAlt: "Dentist reviewing patient records during a checkup",
@@ -26,7 +26,7 @@ function BlogCard({ post }) {
   return (
     <Link href={`/blog/${post.slug}`} className="block">
       <div className="group flex flex-col gap-4 rounded-2xl border border-black/8 bg-primary hover:-translate-y-1.5 hover:shadow-lg hover:border-accent/30 transition-all duration-300 overflow-hidden">
-        <div className="relative aspect-16/9 overflow-hidden">
+        <div className="relative aspect-video overflow-hidden">
           <Image
             src={post.image}
             alt={post.imageAlt}
@@ -82,8 +82,8 @@ export default function BlogPage() {
             Tips, Guides & Clinic News
           </h1>
           <p className="text-textDark/70 text-lg">
-            Practical advice and honest answers from the Dental Avenue team --
-            written for Faisalabad families, not search engines.
+            Practical advice and honest answers from the Dental Avenue team,
+            written for Faisalabad families.
           </p>
         </div>
 
