@@ -18,12 +18,12 @@ body {
 
 ::selection {
   background-color: #f97316;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 ::-moz-selection {
   background-color: #f97316;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 h1,
@@ -51,18 +51,14 @@ h6 {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-::-webkit-scrollbar {
-  width: 8px;
-}
-
 ::-webkit-scrollbar-track {
-  background: #1b3a6b;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #f97316;
   border-radius: 9999px;
-  border: 2px solid #1b3a6b;
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -71,5 +67,5 @@ h6 {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #f97316 #1b3a6b;
+  scrollbar-color: #f97316 #ffffff;
 }
